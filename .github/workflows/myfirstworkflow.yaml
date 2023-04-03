@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   
 jobs:
-    myfristjob: 
+    myfirstjob: 
               name: First job
               runs-on: ubuntu-latest
               steps:
@@ -18,6 +18,21 @@ jobs:
                   echo "Please Alex is friday let me escape" >> newfile.yaml
                   cat newfile.yaml
                   pwd
+    mySecondjob:
+              needs: [myfirstjob]
+              name: Second job
+              runs-on: macos-latest
+              steps:
+              - name: Step One
+                run: date
+                
+    myThirdjob:
+              name: Third job
+              runs-on: windows-latest
+              steps:
+              - name: Step One
+                run: date
+              
                   
                   
                   
