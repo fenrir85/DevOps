@@ -11,7 +11,7 @@ on:
    workflow_dispatch:
 jobs: 
  container:
-      name: Node Tests
+      name: Build Docker Container
       runs-on: ubuntu-latest
 #      if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
 #      needs: [test]
@@ -34,7 +34,7 @@ jobs:
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/capstone-devops:latest
 
  test:
-      name: Test Node App and Build Docker Container
+      name: Node App Tests 
       runs-on: ubuntu-latest
       if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
       needs: [container]
