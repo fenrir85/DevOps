@@ -29,8 +29,8 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v4
           with:
-            context: ./capstone_project/hello-world/
-            file: .Dockerfile
+            context: ./capstone_project/hello-world
+            file: Dockerfile
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/capstone-devops:latest
 
