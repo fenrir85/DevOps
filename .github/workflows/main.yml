@@ -22,21 +22,24 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: ${{ matrix.node-version }}
-          run: cd capstone_project/hello-world/
         - name: Install dependency packages
-          run: npm install
+          run: |
+            cd capstone_project/hello-world/
+            npm install
         - name: Run Tests
-          run: npm test
-        - name: Start Hello World
-          run: npm start
+          run: |
+            cd capstone_project/hello-world/
+            npm test
+ #       - name: Start Hello World
+ #         run: |
+ #           cd capstone_project/hello-world/
+ #           npm start
 
   container:
       runs-on: ubuntu-latest
       if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
       needs: [test]
-      runs-on: ubuntu-latest
       steps:
-          run: cd capstone_project/hello-world/
         - name: Checkout
           uses: actions/checkout@v3
         - name: Login to Docker Hub
@@ -50,6 +53,6 @@ jobs:
           uses: docker/build-push-action@v4
           with:
             context: .
-            file: ./Dockerfile
+            file: ./capstone_project/hello-world/Dockerfile
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/capstone-devops:latest
