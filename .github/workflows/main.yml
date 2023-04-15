@@ -12,8 +12,9 @@ on:
 jobs:
  
   container:
+      name: Container Build
       runs-on: ubuntu-latest
-      if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
+#      if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
 #      needs: [test]
       steps:
         - name: Checkout
