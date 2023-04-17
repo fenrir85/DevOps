@@ -5,6 +5,9 @@ This repository is Casptone Project for bootcamp ITJ Devops
 Github Action use Folder Capstone Project execute tests 
 if pass then build docker to my docker hub named  fenrius85 / capstone-devops
 
+![image](https://user-images.githubusercontent.com/1261774/232399979-b6057e4d-e163-4efa-8cba-df8162415dda.png)
+
+
 You can use the image with this commands on windows powershell
 docker pull fenrius85/capstone-devops
 docker run -p 3000:3000 fenrius85/capstone-devops
