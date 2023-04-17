@@ -1,0 +1,10 @@
+- name: Change Hello Playbook 
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Ping Check using ping module
+      ping:
+
+    - name: Replace Hello
+      command: sudo sed -i 's/Hello World!/Hello Devops!/g' /usr/src/app/src/App.js
