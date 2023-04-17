@@ -9,7 +9,7 @@ RUN useradd -rm -d /home/ansible_controller -s /bin/bash -g root -G sudo -u 1001
 RUN echo ansible_controller:12345 | chpasswd
 RUN echo "ansible_controller ALL=(ALL:ALL) NOPASSWD: ALL" |  EDITOR="tee -a"  visudo
 #RUN service ssh start
-RUN /etc/init.d/ssh start
+#RUN /etc/init.d/ssh start
 EXPOSE 22
 
 # App Folder
@@ -18,8 +18,9 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY . /usr/src/app/
 RUN npm install
+
 # Bundle app source
 EXPOSE 3000
-CMD npm start
+CMD service ssh start && npm start
 
 

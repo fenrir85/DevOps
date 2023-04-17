@@ -23,4 +23,4 @@ RUN echo "ansible_controller ALL=(ALL:ALL) NOPASSWD: ALL" |  EDITOR="tee -a"  vi
 RUN mkdir -p /home/ansible_controller/.ssh
 
 
-CMD ["/bin/bash", "/home/ansible_controller/startup.sh"]
+CMD service ssh start && tail -f /dev/null
